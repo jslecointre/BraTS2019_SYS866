@@ -1,0 +1,88 @@
+############################ input configuration sections
+[t1]
+path_to_search = 
+filename_contains = t1
+filename_not_contains = t1ce
+spatial_window_size = (19, 144, 144)
+axcodes=(L,P,S)
+interp_order = 3
+
+[t2]
+path_to_search = 
+filename_contains = t2
+filename_not_contains =
+spatial_window_size = (19, 144, 144)
+axcodes=(L,P,S)
+interp_order = 3
+
+[t1ce]
+path_to_search = 
+filename_contains = t1ce
+filename_not_contains =
+spatial_window_size = (19, 144, 144)
+axcodes=(L,P,S)
+interp_order = 3
+
+[flair]
+path_to_search = 
+filename_contains = flair
+filename_not_contains =
+spatial_window_size = (19, 144, 144)
+axcodes=(L,P,S)
+interp_order = 3
+
+[label]
+path_to_search = 
+filename_contains = seg
+filename_not_contains =
+spatial_window_size = (11, 144, 144)
+axcodes=(L,P,S)
+interp_order = 0
+
+############################## system configuration sections
+[SYSTEM]
+cuda_devices = ""
+num_threads = 2
+num_gpus = 1
+model_dir = models/anisotropic_nets_brats_challenge/model_whole_tumor_axial
+queue_length = 20
+
+[NETWORK]
+name = anisotropic_nets_brats_challenge.wt_net.WTNet
+activation_function = prelu
+decay = 1e-7
+reg_type = L2
+batch_size = 1
+
+volume_padding_size=(4,15,15)
+histogram_ref_file = label_mapping_whole_tumor.txt
+
+whitening = True
+normalise_foreground_only = True
+multimod_foreground_type = and
+foreground_type = threshold_plus
+
+[TRAINING]
+optimiser = adam
+sample_per_volume = 24
+lr = 1e-4
+loss_type = Dice
+starting_iter = 0
+save_every_n = 5000
+max_iter = 10000
+max_checkpoints = 20
+
+[INFERENCE]
+border = (4,0,0)
+save_seg_dir = ./pred_whole_tumor_axial
+output_interp_order = 3
+spatial_window_size = (120, 144, 144)
+inference_iter = 15000
+
+############################ custom configuration sections
+[SEGMENTATION]
+image = flair,t1,t1ce,t2
+label = label
+output_prob = True
+num_classes = 4
+label_normalisation = True
