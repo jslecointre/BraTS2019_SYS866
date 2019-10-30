@@ -70,7 +70,7 @@ if __name__ == '__main__':
     modelname = opt.model_name
 
     lgg, hgg = get_file_names(data_dir)
-    test_ratio = 0.2
+    test_ratio = 0.1
 
     train_hgg_idx, test_hgg_idx = get_rdm_indexes(test_ratio, len(hgg))
     train_lgg_idx, test_lgg_idx = get_rdm_indexes(test_ratio, len(lgg))
