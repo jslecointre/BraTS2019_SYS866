@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     filename = 'highres3dnet_config_eval.ini.template'
 
-    config_templates_dir = '{0}/ini_files/{1}'.format(os.getcwd(), filename)
+    config_templates_dir = '{0}/ini_files/{1}/{2}'.format(os.getcwd(), modelname, filename)
     config_dir = '{0}/niftynet/extensions/{1}'.format(expanduser('~'), modelname)
 
     config = configparser.ConfigParser()
