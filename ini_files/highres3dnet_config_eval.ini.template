@@ -3,7 +3,7 @@
 path_to_search =
 filename_contains = t1
 filename_not_contains = t1ce
-spatial_window_size = (19, 144, 144)
+spatial_window_size = (24, 144, 144)
 axcodes=(L,P,S)
 interp_order = 3
 
@@ -11,7 +11,7 @@ interp_order = 3
 path_to_search =
 filename_contains = t2
 filename_not_contains =
-spatial_window_size = (19, 144, 144)
+spatial_window_size = (24, 144, 144)
 axcodes=(L,P,S)
 interp_order = 3
 
@@ -19,7 +19,7 @@ interp_order = 3
 path_to_search =
 filename_contains = t1ce
 filename_not_contains =
-spatial_window_size = (19, 144, 144)
+spatial_window_size = (24, 144, 144)
 axcodes=(L,P,S)
 interp_order = 3
 
@@ -27,7 +27,7 @@ interp_order = 3
 path_to_search =
 filename_contains = flair
 filename_not_contains =
-spatial_window_size = (19, 144, 144)
+spatial_window_size = (24, 144, 144)
 axcodes=(L,P,S)
 interp_order = 3
 
@@ -35,7 +35,7 @@ interp_order = 3
 path_to_search =
 filename_contains = seg
 filename_not_contains =
-spatial_window_size = (11, 144, 144)
+spatial_window_size = (16, 144, 144)
 axcodes=(L,P,S)
 interp_order = 0
 
