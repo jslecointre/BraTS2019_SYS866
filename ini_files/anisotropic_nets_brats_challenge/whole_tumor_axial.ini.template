@@ -89,3 +89,8 @@ label = label
 output_prob = True
 num_classes = 4
 label_normalisation = True
+
+[EVALUATION]
+path_to_search =
+save_csv_dir = ./evaluate_whole_tumor_axial
+evaluations = dica

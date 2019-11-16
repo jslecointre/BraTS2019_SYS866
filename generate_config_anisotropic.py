@@ -59,7 +59,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_dir", type=str, default="mnt/dataset/MICCAI_BraTS_2019_Data_Training/",
                         help="path to dataset")
-    parser.add_argument("--model_name", type=str, default="deepmedic",
+    parser.add_argument("--model_name", type=str, default="anisotropic_nets_brats_challenge",
                         help="niftynet model name to use")
 
     opt = parser.parse_args()
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     data_dir = opt.dataset_dir
     modelname = opt.model_name
 
-    filename = 'deepmedic_config.ini.template'
+    filename = 'whole_tumor_axial.ini.template'
 
     config_templates_dir = '{0}/ini_files/{1}/{2}'.format(os.getcwd(), modelname, filename)
     config_dir = '{0}/niftynet/extensions/{1}'.format(expanduser('~'), modelname)
@@ -76,17 +76,15 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read_file(open(config_templates_dir))
 
-    all_dataset_directory = ''
-
     for section in ['t1', 't2', 't1ce', 'flair', 'label']:
-        config.set(section, 'path_to_search', '{0}/dataset/HGG ,{0}/dataset/LGG  '.format(os.getcwd()))
+        config.set(section, 'path_to_search', '{0}/dataset/HGG_train ,{0}/dataset/LGG_train  '.format(os.getcwd()))
+
 
     for section in ['EVALUATION', 'INFERENCE']:
-        config.set(section, 'path_to_search', '{0}/dataset/HGG ,{0}/dataset/LGG  '.format(os.getcwd()))
+        config.set(section, 'path_to_search', '{0}/dataset/HGG_test ,{0}/dataset/LGG_test  '.format(os.getcwd()))
 
     # Writing our configuration file to 'filename.ini'
     with open(config_dir + '/' + filename[:-9], 'w+') as configfile:
-        print(config_dir + '/' + filename[:-9])
         config.write(configfile)
 
 

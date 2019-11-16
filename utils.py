@@ -58,6 +58,28 @@ def create_symlinks(tr_hgg, te_hgg, tr_lgg, te_lgg):
                 os.symlink('{0}/{1}'.format(src, file), '{0}/{1}'.format(dst_prefix, file))
 
 
+def create_symlinks_all_data(hgg, lgg):
+
+    cwd = os.getcwd()
+    dir_contents = dict(zip(['HGG', 'LGG'], [hgg, lgg]))
+
+    # for dataset type train test LGG or HGG
+    for d, sub_dirs in dir_contents.items():
+        dst_prefix = '{0}/dataset/{1}'.format(cwd, d)
+
+        shutil.rmtree(dst_prefix)
+        os.makedirs(dst_prefix)
+
+        # for each directory (patient)
+        for src in sub_dirs:
+
+            all_files = os.listdir(src)
+            # for each file type per patient (t1,t2,t1ce,flair,seg)
+            for file in all_files:
+                #print('{0}/{1}'.format(src, file))
+                os.symlink('{0}/{1}'.format(src, file), '{0}/{1}'.format(dst_prefix, file))
+
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
@@ -84,19 +106,6 @@ if __name__ == '__main__':
     print('Size of TRAIN dataset : HGG => {0}  LGG => {1}'.format(len(train_hgg_dir), len(train_lgg_dir)))
     print('Size of TEST dataset : HGG => {0}  LGG => {1}'.format(len(test_hgg_dir), len(test_lgg_dir)))
 
-    create_symlinks(train_hgg_dir, test_hgg_dir, train_lgg_dir, test_lgg_dir)
+    #create_symlinks(train_hgg_dir, test_hgg_dir, train_lgg_dir, test_lgg_dir)
 
-    filename = 'whole_tumor_axial.ini.template'
-
-    config_templates_dir = '{0}/ini_files/{1}/{2}'.format(os.getcwd(), modelname, filename)
-    config_dir = '{0}/niftynet/extensions/{1}'.format(expanduser('~'), modelname)
-
-    config = configparser.ConfigParser()
-    config.read_file(open(config_templates_dir))
-
-    for section in ['t1', 't2', 't1ce', 'flair', 'label']:
-        config.set(section, 'path_to_search', '{0}/dataset/HGG_train ,{0}/dataset/LGG_train  '.format(os.getcwd()))
-
-    # Writing our configuration file to 'filename.ini'
-    with open(config_dir+'/'+filename[:-9], 'w+') as configfile:
-        config.write(configfile)
+    create_symlinks_all_data(hgg, lgg)
