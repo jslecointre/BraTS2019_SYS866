@@ -77,11 +77,13 @@ if __name__ == '__main__':
     config.read_file(open(config_templates_dir))
 
     for section in ['t1', 't2', 't1ce', 'flair', 'label']:
-        config.set(section, 'path_to_search', '{0}/dataset/HGG_train ,{0}/dataset/LGG_train  '.format(os.getcwd()))
+        #config.set(section, 'path_to_search', '{0}/dataset/HGG_train ,{0}/dataset/LGG_train  '.format(os.getcwd()))
+        config.set(section, 'path_to_search', '{0}/dataset/HGG ,{0}/dataset/LGG'.format(os.getcwd()))
 
 
-    for section in ['EVALUATION', 'INFERENCE']:
-        config.set(section, 'path_to_search', '{0}/dataset/HGG_test ,{0}/dataset/LGG_test  '.format(os.getcwd()))
+    #for section in ['EVALUATION', 'INFERENCE']:
+        #config.set(section, 'path_to_search', '{0}/dataset/HGG_test ,{0}/dataset/LGG'.format(os.getcwd()))
+        #config.set(section, 'path_to_search', '{0}/dataset/HGG_test ,{0}/dataset/LGG_test  '.format(os.getcwd()))
 
     # Writing our configuration file to 'filename.ini'
     with open(config_dir + '/' + filename[:-9], 'w+') as configfile:

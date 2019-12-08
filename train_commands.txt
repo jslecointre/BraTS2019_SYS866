@@ -1,0 +1,11 @@
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_wt_ax.txt
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_wt_cr.txt
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_wt_sg.txt
+
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_tc_ax.txt
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_tc_cr.txt
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_tc_sg.txt
+
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_en_ax.txt
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_en_cr.txt
+python /mnt/SYS866/BraTS2019_SYS866/anisotropic_model/train.py config19/train_en_sg.txt

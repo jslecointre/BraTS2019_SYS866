@@ -72,6 +72,7 @@ save_every_n = 5000
 max_iter = 30000
 max_checkpoints = 20
 exclude_fraction_for_validation = 0.2
+exclude_fraction_for_inference = 0.1
 validation_every_n = 48
 tensorboard_every_n = 1
 
@@ -80,7 +81,7 @@ border = (4,0,0)
 save_seg_dir = ./pred_whole_tumor_axial
 output_interp_order = 3
 spatial_window_size = (120, 144, 144)
-inference_iter = 15000
+inference_iter = 20000
 
 ############################ custom configuration sections
 [SEGMENTATION]
@@ -91,6 +92,5 @@ num_classes = 4
 label_normalisation = True
 
 [EVALUATION]
-path_to_search =
 save_csv_dir = ./evaluate_whole_tumor_axial
-evaluations = dica
+evaluations = dice

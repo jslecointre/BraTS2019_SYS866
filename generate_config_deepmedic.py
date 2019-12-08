@@ -81,8 +81,8 @@ if __name__ == '__main__':
     for section in ['t1', 't2', 't1ce', 'flair', 'label']:
         config.set(section, 'path_to_search', '{0}/dataset/HGG ,{0}/dataset/LGG  '.format(os.getcwd()))
 
-    for section in ['EVALUATION', 'INFERENCE']:
-        config.set(section, 'path_to_search', '{0}/dataset/HGG ,{0}/dataset/LGG  '.format(os.getcwd()))
+    #for section in ['EVALUATION', 'INFERENCE']:
+    #    config.set(section, 'path_to_search', '{0}/dataset/HGG ,{0}/dataset/LGG  '.format(os.getcwd()))
 
     # Writing our configuration file to 'filename.ini'
     with open(config_dir + '/' + filename[:-9], 'w+') as configfile:

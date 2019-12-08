@@ -98,6 +98,25 @@ if __name__ == '__main__':
     train_hgg_idx, test_hgg_idx = get_rdm_indexes(test_ratio, len(hgg))
     train_lgg_idx, test_lgg_idx = get_rdm_indexes(test_ratio, len(lgg))
 
+    # for i in [lgg[idx].split('/')[-1] for idx in test_lgg_idx]:
+    #     print('{0},inference'.format(i))
+
+    # for i in [hgg[idx].split('/')[-1] for idx in test_hgg_idx]:
+    #     print('{0},inference'.format(i))
+
+    # for i in [hgg[idx].split('/')[-1] for idx in test_hgg_idx]:
+    #     print('HGG/{0}'.format(i))
+    #
+    # for i in [lgg[idx].split('/')[-1] for idx in test_lgg_idx]:
+    #     print('LGG/{0}'.format(i))
+
+    # for i in [hgg[idx].split('/')[-1] for idx in train_hgg_idx]:
+    #     print('HGG/{0}'.format(i))
+
+    for i in [lgg[idx].split('/')[-1] for idx in train_lgg_idx]:
+        print('LGG/{0}'.format(i))
+
+
     train_hgg_dir = [hgg[idx] for idx in train_hgg_idx]
     test_hgg_dir = [hgg[idx] for idx in test_hgg_idx]
     train_lgg_dir = [lgg[idx] for idx in train_lgg_idx]
