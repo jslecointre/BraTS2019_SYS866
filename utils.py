@@ -7,7 +7,6 @@ import shutil
 import pandas as pd
 
 
-
 def get_file_names(dataset_path):
     """
     get_file_names(str) -> list of HGG files , LGG files
