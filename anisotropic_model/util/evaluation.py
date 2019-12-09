@@ -73,20 +73,23 @@ def dice_of_brats_data_set(gt_names, seg_names, type_idx):
                 dice_one_volume.append(temp_dice)
         dice_all_data.append(dice_one_volume)
     return dice_all_data
-    
-if __name__ == '__main__':
-    year = 15 # or 17
-    
-    if(year == 15):
-        s_folder = '/mnt/SYS866/brats17/result15'
-        g_folder = '/mnt/SYS866/data/gt'
-        patient_names_file = 'config15/test_names.txt'
-    else:
-        s_folder = '/mnt/SYS866/brats17/result17'
-        g_folder = '/home/guotwang/data/Brats17TrainingData'
-        patient_names_file = 'config15/test_names.txt'
 
-    test_types = ['whole','core', 'all']
+
+if __name__ == '__main__':
+    year = 17 # or 19
+    
+    if year == 19:
+        s_folder = '/mnt/SYS866/BraTS2019_SYS866/anisotropic_model/result19'
+        g_folder = '/mnt/SYS866/data/gt19'
+        patient_names_file = 'config19/test_names.txt'
+    elif year == 17:
+        s_folder = '/mnt/SYS866/BraTS2019_SYS866/anisotropic_model/result17'
+        g_folder = '/mnt/SYS866/data/gt17'
+        patient_names_file = 'config17/test_names.txt'
+    else:
+        raise ValueError
+
+    test_types = ['whole', 'core', 'all']
     gt_names = get_ground_truth_names(g_folder, patient_names_file, year)
     seg_names = get_segmentation_names(s_folder, patient_names_file)
     for type_idx in range(3):
@@ -96,14 +99,14 @@ if __name__ == '__main__':
         # 2 all
         print(type_idx, dice)
         dice = np.asarray(dice)
-        dice_mean = dice.mean(axis = 0)
-        dice_std = dice.std(axis  = 0)
+        dice_mean = dice.mean(axis= 0)
+        dice_std = dice.std(axis= 0)
         test_type = test_types[type_idx]
         np.savetxt(s_folder + '/dice_{0:}.txt'.format(test_type), dice)
         np.savetxt(s_folder + '/dice_{0:}_mean.txt'.format(test_type), dice_mean)
         np.savetxt(s_folder + '/dice_{0:}_std.txt'.format(test_type), dice_std)
         print('tissue type', test_type)
-        if(test_type == 'all'):
+        if test_type == 'all' :
             print('tissue label', [1, 2, 3, 4])
         print('dice mean  ', dice_mean)
         print('dice std   ', dice_std)

@@ -1,7 +1,7 @@
 [data]
 data_root         = /mnt/SYS866/data/MICCAI_BraTS_2019_Data_Training
-save_folder       = result19
-data_names        = config19/test_names_temp.txt
+save_folder       = result17
+data_names        = config17/test_names.txt
 modality_postfix  = [flair, t1, t1ce, t2]
 file_postfix      = nii.gz
 

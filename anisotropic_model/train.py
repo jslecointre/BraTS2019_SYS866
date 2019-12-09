@@ -96,7 +96,7 @@ def train(config_file):
         tempy = train_pair['labels']
         opt_step.run(session=sess, feed_dict={x: tempx, w: tempw, y: tempy})
 
-        if (n % config_train['test_iteration'] == 0):
+        if n % config_train['test_iteration'] == 0:
             batch_dice_list = []
             for step in range(config_train['test_step']):
                 train_pair = dataloader.get_subimage_batch()
