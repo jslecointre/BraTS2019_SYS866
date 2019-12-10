@@ -451,6 +451,7 @@ def test(config_file):
     np.savetxt(save_folder + '/test_time.txt', test_time)
     sess.close()
 
+
 if __name__ == '__main__':
     if (len(sys.argv) != 2):
         print('Number of arguments should be 2. e.g.')
