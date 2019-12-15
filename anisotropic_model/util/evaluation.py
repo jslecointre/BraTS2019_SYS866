@@ -17,8 +17,8 @@ import numpy as np
 from util.data_process import load_3d_volume_as_array, binary_dice3d
 
 
-def get_ground_truth_names(g_folder, patient_names_file, year = 15):
-    assert(year==15 or year == 17)
+def get_ground_truth_names(g_folder, patient_names_file, year = 17):
+    assert(year==17 or year == 19)
     with open(patient_names_file) as f:
             content = f.readlines()
             patient_names = [x.strip() for x in content]
@@ -76,7 +76,8 @@ def dice_of_brats_data_set(gt_names, seg_names, type_idx):
 
 
 if __name__ == '__main__':
-    year = 17 # or 19
+    #year = 17
+    year = 19
     
     if year == 19:
         s_folder = '/mnt/SYS866/BraTS2019_SYS866/anisotropic_model/result19'
